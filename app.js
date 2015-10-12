@@ -1,25 +1,12 @@
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+mongoose.connect('mongodb://localhost/mynounou');
 
 var express = require('express');
 var app = express();
 
+
 var nannies = require('./routes/nannies');
-//mongoose.connect('mongodb://localhost/mynounou');
-//var nannySchema = new Schema({
-//	name: String,
-//})
-//var Nanny = mongoose.model('Nanny', nannySchema);
-//
-//var nannyExample = new Nanny({
-//	name: 'Myriam'
-//});
-//
-//nannyExample.save();
-//
-//Nanny.find(function(err, nannies){
-//	console.info(nannies);
-//});
+
 
 app.use('/nannies', nannies);
 

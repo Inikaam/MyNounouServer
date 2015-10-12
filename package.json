@@ -1,0 +1,16 @@
+{
+  "name": "MyNounou_Server",
+  "version": "1.0.0",
+  "description": "Serveur pour l'application MyNounou",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "MyNounou",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "mongoose": "^4.1.10"
+  }
+}

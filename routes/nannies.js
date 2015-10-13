@@ -38,7 +38,23 @@ router.route('/')
 		}
 	});
 
-
+router.route('/:id')
+	.get(function(req, res) {
+		id = req.params.id;
+		
+		if(/[0-9a-f]{24}/i.test(id)) {
+			Nanny.findById(id, function (err, nanny){
+				if (err)
+					res.send('Error');
+				else if(!nanny)
+					res.status(404).send("Aucune nounou trouvée.")
+				else 
+					res.json(nanny);
+			});
+		} else {
+			res.sendStatus(400);
+		}
+	})
 
 // var nannyExample = new Nanny({
 // name: 'Myriam'

@@ -6,8 +6,8 @@ var parseUrlencoded = bodyParser.urlencoded({
 });
 var Nanny = require('../models/Nanny');
 
-router
-	.route('/').get(function(req, res) {
+router.route('/')
+	.get(function(req, res) {
 		Nanny.find(function(err, nannies) {
 			res.json(nannies);
 		});
@@ -22,8 +22,13 @@ router
 		if (isValid) {
 			var newNanny = new Nanny(req.body);
 			newNanny.save(function(err){
-				if (err)
-					res.send(err.errors.tel.message);
+				if (err) {
+					var errors = {};
+					for(var i in err.errors) {
+						errors[i] = err.errors[i].message;
+					}
+					res.send(errors);
+				}
 				else {
 					res.json(newNanny);
 				}
@@ -32,6 +37,8 @@ router
 			res.send('Champs invalides !');
 		}
 	});
+
+
 
 // var nannyExample = new Nanny({
 // name: 'Myriam'

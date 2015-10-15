@@ -81,7 +81,14 @@ router.route('/:id')
 		}
 	})
 	.delete(function(req, res) {
+		id = req.params.id;
 		
+		Nanny.remove({_id: id}, function(err){
+			if(err)
+				res.send('Error')
+			else
+				res.sendStatus(200);
+		});
 	});
 
 module.exports = router;

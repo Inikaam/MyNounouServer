@@ -28,11 +28,11 @@ L’API utilise l’architecture REST. Il y a 3 objets de données :
 ### Nounous
 * **Collection :** nannies
 * URLs
-..* **Liste des nounous :** GET /api/nannies
-..* **Une nounou :** GET /api/nannies/{id de bdd}
-..* **Ajouter une nounou :** POST /api/nannies
-..* **Modifier une nounou :** PUT /api/nannies/{id de bdd}
-..* **Supprimer une nounou :** DELETE /api/nannies/{id de bdd}
+  * **Liste des nounous :** GET /api/nannies
+  * **Une nounou :** GET /api/nannies/{id de bdd}
+  * **Ajouter une nounou :** POST /api/nannies
+  * **Modifier une nounou :** PUT /api/nannies/{id de bdd}
+  * **Supprimer une nounou :** DELETE /api/nannies/{id de bdd}
 
 ### Objet Nanny
 * **email :** (String, required) mail de la nounou
@@ -49,29 +49,29 @@ L’API utilise l’architecture REST. Il y a 3 objets de données :
 * **video :** (String, Url) vidéo de présentation de la nounou
 * **price :** (Float) tarif à l’heure de la nounou, en euros (€)
 * **comments :** Tableau de données
-..* **id_parent :** (String) ID du parent ayant posté le commentaire
-..* **date :** (Date) date de création du commentaire
-..* **note :** (Float) note de la prestation donnée par le parent, allant de 0 à 5
-..* **text :** (String) commentaire du parent sur 255 caractères
+  * **id_parent :** (String) ID du parent ayant posté le commentaire
+  * **date :** (Date) date de création du commentaire
+  * **note :** (Float) note de la prestation donnée par le parent, allant de 0 à 5
+  * **text :** (String) commentaire du parent sur 255 caractères
 * **dispos :** objet contenant chaque jour de la semaine notés de la façon suivante : lun, mar, mer, jeu, ven, sam, dim. Chaque entrée contient un tableau d’objets formatés ainsi :
-..* **start : (String) Heure de début de la disponibilité pour le jour donné 
+  * **start : (String) Heure de début de la disponibilité pour le jour donné 
 (format “09:00”)
-..* **end : (String) Heure de fin de la disponibilité pour le jour donné
+  * **end : (String) Heure de fin de la disponibilité pour le jour donné
 (format “12:00”)
 * **restrictions :** Tableau de données
-..* **start :** (Date) date et heure de début d’indisponibilité
-..* **end :** (Date) date et heure de fin d’indisponibilité
-..* **reason :** (String) raison de l’indisponibilité (réservation, congé, etc)
-..* **id_parent :** (String) ID du parent concerné s’il s’agit d’une réservation, null sinon
+  * **start :** (Date) date et heure de début d’indisponibilité
+  * **end :** (Date) date et heure de fin d’indisponibilité
+  * **reason :** (String) raison de l’indisponibilité (réservation, congé, etc)
+  * **id_parent :** (String) ID du parent concerné s’il s’agit d’une réservation, null sinon
 
 ### Parents
 * **Collection :** parents
 * **URLs**
-..* **Liste des parents :** GET /api/parents
-..* **Un parent :** GET /api/parents/{id de bdd}
-..* **Ajouter un parent :** POST /api/parents
-..* **Modifier un parent :** PUT /api/parents/{id de bdd}
-..* **Supprimer un parent :** DELETE /api/parents/{id de bdd}
+  * **Liste des parents :** GET /api/parents
+  * **Un parent :** GET /api/parents/{id de bdd}
+  * **Ajouter un parent :** POST /api/parents
+  * **Modifier un parent :** PUT /api/parents/{id de bdd}
+  * **Supprimer un parent :** DELETE /api/parents/{id de bdd}
 
 ### Objet Parent
 * **email :** (String, required) mail du parent
@@ -89,17 +89,17 @@ L’API utilise l’architecture REST. Il y a 3 objets de données :
 ### Conversations
 * **Collection :** chats
 * **URLs**
-..* **Liste des conversations pour un parent, une nounou ou les deux :** GET /api/chats?parent={id du parent}&nanny={id de la nounou}
-....* Il faut au moins un des deux paramètres de filtrage
-..* **Une conversation :** GET /api/chats/{id de bdd}
-..* **Ajouter une conversation :** POST /api/chats
-..* **Modifier une conversation :** PUT /api/chats/{id de bdd}
-....* Utiliser cette méthode pour ajouter un message dans une conversation existante
-..* **Supprimer une conversation :** DELETE /api/chats/{id de bdd}
+  * **Liste des conversations pour un parent, une nounou ou les deux :** GET /api/chats?parent={id du parent}&nanny={id de la nounou}
+    * Il faut au moins un des deux paramètres de filtrage
+  * **Une conversation :** GET /api/chats/{id de bdd}
+  * **Ajouter une conversation :** POST /api/chats
+  * **Modifier une conversation :** PUT /api/chats/{id de bdd}
+    * Utiliser cette méthode pour ajouter un message dans une conversation existante
+  * **Supprimer une conversation :** DELETE /api/chats/{id de bdd}
 
 ### Objet Chat
 * **id_nanny :** (String) ID de la nounou ayant participé à la conversation
 * **id_parent :** (String) ID du parent ayant participé à la conversation
 * **messages :** Tableau de données
-..* **date :** (Date) date de création du message
-..* **message :** (String) contenu du message
+  * **date :** (Date) date de création du message
+  * **message :** (String) contenu du message

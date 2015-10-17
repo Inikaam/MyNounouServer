@@ -27,7 +27,7 @@ L’API utilise l’architecture REST. Il y a 3 objets de données :
 
 ### Nounous
 * **Collection :** nannies
-* URLs
+* **URLs**
   * **Liste des nounous :** GET /api/nannies
   * **Une nounou :** GET /api/nannies/{id de bdd}
   * **Ajouter une nounou :** POST /api/nannies
@@ -54,9 +54,9 @@ L’API utilise l’architecture REST. Il y a 3 objets de données :
   * **note :** (Float) note de la prestation donnée par le parent, allant de 0 à 5
   * **text :** (String) commentaire du parent sur 255 caractères
 * **dispos :** objet contenant chaque jour de la semaine notés de la façon suivante : lun, mar, mer, jeu, ven, sam, dim. Chaque entrée contient un tableau d’objets formatés ainsi :
-  * **start : (String) Heure de début de la disponibilité pour le jour donné 
+  * **start :** (String) Heure de début de la disponibilité pour le jour donné 
 (format “09:00”)
-  * **end : (String) Heure de fin de la disponibilité pour le jour donné
+  * **end :** (String) Heure de fin de la disponibilité pour le jour donné
 (format “12:00”)
 * **restrictions :** Tableau de données
   * **start :** (Date) date et heure de début d’indisponibilité
@@ -89,7 +89,7 @@ L’API utilise l’architecture REST. Il y a 3 objets de données :
 ### Conversations
 * **Collection :** chats
 * **URLs**
-  * **Liste des conversations pour un parent, une nounou ou les deux :** GET /api/chats?parent={id du parent}&nanny={id de la nounou}
+  * **Liste des conversations pour un parent, une nounou ou les deux :** GET /api/chats?parent={id_du_parent}&nanny={id_de_la_nounou}
     * Il faut au moins un des deux paramètres de filtrage
   * **Une conversation :** GET /api/chats/{id de bdd}
   * **Ajouter une conversation :** POST /api/chats

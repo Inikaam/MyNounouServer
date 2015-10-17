@@ -1,9 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var bodyParser = require('body-parser');
-var parseUrlencoded = bodyParser.urlencoded({
-	extended : false
-});
+
 var ValidatorHelper = require('../helpers/Validator');
 var Parent = require('../models/Parent');
 
@@ -13,7 +10,7 @@ router.route('/')
 			res.json(parents);
 		});
 	})
-	.post(parseUrlencoded, function(req, res) {
+	.post(function(req, res) {
 		var isValid = true;
 	
 		for (var index in req.body) {
@@ -60,7 +57,7 @@ router.route('/:id')
 				res.json(parent);
 		});
 	})
-	.put(parseUrlencoded, function(req, res) {
+	.put(function(req, res) {
 		id = req.params.id;
 		var isValid = true;
 		for (var index in req.body) {

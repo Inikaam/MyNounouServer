@@ -1,9 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var bodyParser = require('body-parser');
-var parseUrlencoded = bodyParser.urlencoded({
-	extended : false
-});
+
 var ValidatorHelper = require('../helpers/Validator');
 var Chat = require('../models/Chat');
 
@@ -28,7 +25,7 @@ router.route('/')
 			});
 		}
 	})
-	.post(parseUrlencoded, function(req, res) {
+	.post(function(req, res) {
 		var isValid = true;
 	
 		for (var index in req.body) {
@@ -75,26 +72,20 @@ router.route('/:id')
 				res.status(200).json(chat);
 		});
 	})
-	.put(parseUrlencoded, function(req, res) {
+	.put(function(req, res) {
 		id = req.params.id;
-		var isValid = true;
-		for (var index in req.body) {
-			isValid &= (req.body[index] != "" && req.body[index] != null);
-		}
-		
-		if (isValid) {
-			Chat.findByIdAndUpdate(id, {$set: req.body}, function(err, chat){
-				if(err)
-					res.send('Error');
+		console.info(id);
+		Chat.findByIdAndUpdate(id, {$set: req.body}, function(err, chat){
+			if(err)
+				res.send('Error');
+			else {
+				if(! chat)
+					res.status(404).send("Aucun message trouvé.");
 				else {
-					if(! chat)
-						res.status(404).send("Aucun message trouvé.");
-					else {
-						res.sendStatus(200);
-					}
+					res.sendStatus(200);
 				}
-			});
-		}
+			}
+		});
 	})
 	.delete(function(req, res) {
 		id = req.params.id;

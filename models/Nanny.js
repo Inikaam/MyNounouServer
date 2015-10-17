@@ -22,6 +22,7 @@ var frenchTimeInterval = {
 var nannySchema = new Schema({
 	email: {
 		type: String,
+		required: true,
 		validate: {
 			validator: ValidatorHelper.isEmail,
 			message: "{VALUE} n'est pas un email valide."
@@ -96,17 +97,26 @@ var nannySchema = new Schema({
 	price: {
 		type: Number,
 		required: true,
-	}
+	},
 	comments: [
         {
-        	id_parent: String,
-        	date: Date,
+        	id_parent: {
+        		type: String,
+        		required: true
+        	},
+        	date: {
+        		type: Date,
+        	},
         	note: {
         		type: Number,
         		min: 0,
-        		max: 5
+        		max: 5,
+        		required: true
         	},
-        	text: String
+        	text: {
+        		type: String,
+        		required: true
+        	}
         }
     ],
     dispos: {

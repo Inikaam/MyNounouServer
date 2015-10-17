@@ -1,12 +1,29 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var Validator = require('../helpers/Validator');
+var ValidatorHelper = require('../helpers/Validator');
+
+var frenchTimeInterval = {
+	start: {
+		type: String,
+		validate: {
+			validator: ValidatorHelper.isFrenchTime,
+			message: "{VALUE} n'est pas une heure de début correcte."
+		}
+	},
+	end: {
+		type: String,
+		validate: {
+			validator: ValidatorHelper.isFrenchTime,
+			message: "{VALUE} n'est pas une heure de fin correcte."
+		}
+	}
+};
 
 var nannySchema = new Schema({
 	email: {
 		type: String,
 		validate: {
-			validator: Validator.isEmail,
+			validator: ValidatorHelper.isEmail,
 			message: "{VALUE} n'est pas un email valide."
 		}
 	},
@@ -40,21 +57,21 @@ var nannySchema = new Schema({
 	tel: {
 		type: String,
 		validate: {
-			validator: Validator.isPhone,
+			validator: ValidatorHelper.isPhone,
 			message: "{VALUE} n'est pas un numéro de téléphone valide."
 		},
 	},
 	pic: {
 		type: String,
 		validate: {
-			validator: Validator.isUrlImage,
+			validator: ValidatorHelper.isUrlImage,
 			message: "{VALUE} n'est pas une image valide."
 		}
 	},
 	video: {
 		type: String,
 		validate: {
-			validator: Validator.isUrlVideo,
+			validator: ValidatorHelper.isUrlVideo,
 			message: "{VALUE} n'est pas une vidéo valide."
 		}
 	},
@@ -69,6 +86,21 @@ var nannySchema = new Schema({
         		max: 5
         	},
         	text: String
+        }
+    ],
+    dispos: {
+    	lun: [frenchTimeInterval],
+    	mar: [frenchTimeInterval],
+    	mer: [frenchTimeInterval],
+    	jeu: [frenchTimeInterval],
+    	ven: [frenchTimeInterval],
+    	sam: [frenchTimeInterval],
+    	dim: [frenchTimeInterval],
+    },
+    restrictions: [
+        {
+        	start: Date,
+        	end: Date,
         }
     ]
 });

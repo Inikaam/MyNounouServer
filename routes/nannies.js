@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var parseUrlencoded = bodyParser.urlencoded({
 	extended : false
 });
+var ValidatorHelper = require('../helpers/Validator');
 var Nanny = require('../models/Nanny');
 
 router.route('/')
@@ -41,7 +42,7 @@ router.route('/')
 router.route('/:id')
 	.all(function(req, res, next) {
 		id = req.params.id;
-		if(! /[0-9a-f]{24}/i.test(id)) {
+		if(! Validator.isMongoId(id)) {
 			res.sendStatus(400);
 		} else {
 			next();

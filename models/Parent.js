@@ -1,12 +1,12 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var Validator = require('../helpers/Validator');
+var ValidatorHelper = require('../helpers/Validator');
 
 var parentSchema = new Schema({
 	email: {
 		type: String,
 		validate: {
-			validator: Validator.isEmail,
+			validator: ValidatorHelper.isEmail,
 			message: "{VALUE} n'est pas un email valide."
 		}
 	},
@@ -31,14 +31,14 @@ var parentSchema = new Schema({
 	pic: {
 		type: String,
 		validate: {
-			validator: Validator.isUrlImage,
+			validator: ValidatorHelper.isUrlImage,
 			message: "{VALUE} n'est pas une image valide."
 		}
 	},
 	video: {
 		type: String,
 		validate: {
-			validator: Validator.isUrlVideo,
+			validator: ValidatorHelper.isUrlVideo,
 			message: "{VALUE} n'est pas une vidéo valide."
 		}
 	},

@@ -1,0 +1,57 @@
+<html lang="fr">
+<head>
+<title>Test</title>
+</head>
+<body>
+	<button id="add">Ajouter</button>
+	<button id="upd">Modifier</button>
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script>
+		$.ajax({
+			method : "GET",
+			url : "/api/nannies",
+		}).done(function(data) {
+			console.info(data);
+		}).fail(function( jqXHR, textStatus ) {
+			  console.info(jqXHR.responseJSON);
+		});
+		
+		$('#add').click(function(){
+			$.ajax({
+				method : "POST",
+				url : "/api/nannies",
+				data: {
+					lastname: 'Mousset',
+					firstname: 'Myriam',
+					password: 'vzerbciZBFSF',
+					gender: 'F',
+					type: 'nanny',
+					age: 57,
+					tel: '0234567891',
+					email: 'myriam.mousset@gmail.com',
+					price: 6.50
+				}
+			}).done(function(data) {
+				console.info(data);
+			}).fail(function( jqXHR, textStatus ) {
+				  console.info(jqXHR.responseJSON);
+			});
+		});	
+		
+		
+		$('#upd').click(function(){
+			$.ajax({
+				method : "PUT",
+				url : "/api/nannies/56224a4711d712dcbbf3114f",
+				data: {
+					age: 59,
+				}
+			}).done(function(data) {
+				console.info(data);
+			}).fail(function( jqXHR, textStatus ) {
+				  console.info(jqXHR.responseJSON);
+			});
+		});	
+	</script>
+</body>
+</html>

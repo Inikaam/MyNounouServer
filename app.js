@@ -31,6 +31,11 @@ app.use('/api/nannies', nannies);
 app.use('/api/parents', parents);
 app.use('/api/chats', chats);
 
+// TODO : retirer ce point d'entrée de test
+app.get('/', function(req, res){
+	res.sendFile(__dirname + '/index.html');
+});
+
 app.listen(8080, function() {
 	console.log('Server running on port 8080...');
 });

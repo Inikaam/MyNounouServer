@@ -5,22 +5,39 @@ var ValidatorHelper = require('../helpers/Validator');
 var parentSchema = new Schema({
 	email: {
 		type: String,
+		required: true,
 		validate: {
 			validator: ValidatorHelper.isEmail,
 			message: "{VALUE} n'est pas un email valide."
 		}
 	},
-	date_add: Date,
+	date_add: {
+		type: Date,
+		default: Date.now
+	},
 	date_upd: {
 		type: Date,
 		default: Date.now
 	},
-	firstname: String,
-	lastname: String,
-	password: String,
-	age: Number,
+	firstname: {
+		type: String,
+		required: true,
+	},
+	lastname: {
+		type: String,
+		required: true,
+	},
+	password: {
+		type: String,
+		required: true,
+	},
+	age: {
+		type: Number,
+		required: true,
+	},
 	gender: {
 		type: String,
+		required: true,
 		validate: {
 			validator: function(val) {
 				return /H|F/i.test(val);

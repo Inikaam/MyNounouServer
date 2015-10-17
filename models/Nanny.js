@@ -27,17 +27,33 @@ var nannySchema = new Schema({
 			message: "{VALUE} n'est pas un email valide."
 		}
 	},
-	date_add: Date,
+	date_add: {
+		type: Date,
+		default: Date.now
+	},
 	date_upd: {
 		type: Date,
 		default: Date.now
 	},
-	firstname: String,
-	lastname: String,
-	password: String,
-	age: Number,
+	firstname: {
+		type: String,
+		required: true,
+	},
+	lastname: {
+		type: String,
+		required: true,
+	},
+	password: {
+		type: String,
+		required: true,
+	},
+	age: {
+		type: Number,
+		required: true,
+	},
 	gender: {
 		type: String,
+		required: true,
 		validate: {
 			validator: function(val) {
 				return /H|F/i.test(val);
@@ -47,6 +63,7 @@ var nannySchema = new Schema({
 	},
 	type: {
 		type: String,
+		required: true,
 		validate: {
 			validator: function(val) {
 				return /nanny|babysitter/i.test(val);
@@ -56,6 +73,7 @@ var nannySchema = new Schema({
 	},
 	tel: {
 		type: String,
+		required: true,
 		validate: {
 			validator: ValidatorHelper.isPhone,
 			message: "{VALUE} n'est pas un numéro de téléphone valide."
@@ -75,7 +93,10 @@ var nannySchema = new Schema({
 			message: "{VALUE} n'est pas une vidéo valide."
 		}
 	},
-	price: Number,
+	price: {
+		type: Number,
+		required: true,
+	}
 	comments: [
         {
         	id_parent: String,
@@ -101,6 +122,14 @@ var nannySchema = new Schema({
         {
         	start: Date,
         	end: Date,
+        	reason: String,
+        	id_parent: {
+        		type: String,
+        		validate: {
+        			validator: ValidatorHelper.isMongoId,
+        			message: "{VALUE} n'est pas un ID valide."
+        		}
+        	}
         }
     ]
 });

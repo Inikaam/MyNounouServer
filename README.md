@@ -64,49 +64,42 @@ L’API utilise l’architecture REST. Il y a 3 objets de données :
 ..* **reason :** (String) raison de l’indisponibilité (réservation, congé, etc)
 ..* **id_parent :** (String) ID du parent concerné s’il s’agit d’une réservation, null sinon
 
-Parents
-Collection : parents
-URLs
-Liste des parents: GET /api/parents
-Un parent: GET /api/parents/{id de bdd}
-Ajouter un parent: POST /api/parents
-Modifier un parent: PUT /api/parents/{id de bdd}
-Supprimer un parent: DELETE /api/parents/{id de bdd}
+### Parents
+* **Collection :** parents
+* **URLs**
+..* **Liste des parents :** GET /api/parents
+..* **Un parent :** GET /api/parents/{id de bdd}
+..* **Ajouter un parent :** POST /api/parents
+..* **Modifier un parent :** PUT /api/parents/{id de bdd}
+..* **Supprimer un parent :** DELETE /api/parents/{id de bdd}
 
-Objet Parent
-email : (String, required) mail du parent
-date_add : (Date) date de création
-date_upd : (Date) date de dernière mise à jour
-firstname : (String) Prénom du parent
-lastname : (String) Nom de famille du parents
-password : (String, indisponible en GET) Mot de passe du parent
-age : (Int) Age du parent
-gender : (String) “H” pour homme, “F” pour femme
-pic : (String, Url) portrait du parent
-video : (String, Url) vidéo de présentation du parent
-favoris : Tableau de Strings, référence à id_nounou
+### Objet Parent
+* **email :** (String, required) mail du parent
+* **date_add :** (Date) date de création
+* **date_upd :** (Date) date de dernière mise à jour
+* **firstname :** (String) Prénom du parent
+* **lastname :** (String) Nom de famille du parents
+* **password :** (String, indisponible en GET) Mot de passe du parent
+* **age :** (Int) Age du parent
+* **gender :** (String) “H” pour homme, “F” pour femme
+* **pic :** (String, Url) portrait du parent
+* **video :** (String, Url) vidéo de présentation du parent
+* **favoris :** Tableau de Strings, référence à id_nounou
 
-Conversations
-Collection : chats
-URLs
-Liste des conversations pour un parent, une nounou ou les deux : 
-GET /api/chats?parent={id du parent}&nanny={id de la nounou}
-Il faut au moins un des deux paramètres de filtrage
-Une conversation : GET /api/chats/{id de bdd}
-Ajouter une conversation : POST /api/chats
-Modifier une conversation : PUT /api/chats/{id de bdd}
-Utiliser cette méthode pour ajouter un message dans une conversation existante
-Supprimer un parent: DELETE /api/chats/{id de bdd}
+### Conversations
+* **Collection :** chats
+* **URLs**
+..* **Liste des conversations pour un parent, une nounou ou les deux :** GET /api/chats?parent={id du parent}&nanny={id de la nounou}
+....* Il faut au moins un des deux paramètres de filtrage
+..* **Une conversation :** GET /api/chats/{id de bdd}
+..* **Ajouter une conversation :** POST /api/chats
+..* **Modifier une conversation :** PUT /api/chats/{id de bdd}
+....* Utiliser cette méthode pour ajouter un message dans une conversation existante
+..* **Supprimer une conversation :** DELETE /api/chats/{id de bdd}
 
-Objet Chat
-id_nanny : (String) ID de la nounou ayant participé à la conversation
-id_parent : (String) ID du parent ayant participé à la conversation
-messages : Tableau de données
-date : (Date) date de création du message
-message : (String) contenu du message
-
-
-Reste à faire :
-Login
-Gestion des tokens
-Mise à jour des données type “tableau” dans les objets (ça ne marche pas pour l’instant)
+### Objet Chat
+* **id_nanny :** (String) ID de la nounou ayant participé à la conversation
+* **id_parent :** (String) ID du parent ayant participé à la conversation
+* **messages :** Tableau de données
+..* **date :** (Date) date de création du message
+..* **message :** (String) contenu du message

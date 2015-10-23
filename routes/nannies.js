@@ -26,7 +26,6 @@ router.route('/')
 				res.status(201).json(newNanny);
 			}
 		});
-
 	});
 
 router.route('/:id')
@@ -40,22 +39,22 @@ router.route('/:id')
 	})
 	.get(function(req, res) {
 		id = req.params.id;
-		
+
 		Nanny.findById(id, function (err, nanny){
 			if (err)
 				res.send('Error');
 			else if(!nanny)
 				res.status(404).send("Aucune nounou trouvée.")
-			else 
+			else
 				res.json(nanny);
 		});
 	})
 	.put(function(req, res) {
 		id = req.params.id;
 		var updateNanny = req.body;
-		
+
 		if(updateNanny.comments);
-		
+
 		Nanny.findByIdAndUpdate(id, {$set: req.body}, function(err, nanny){
 			if(err)
 				res.send('Error');
@@ -67,11 +66,11 @@ router.route('/:id')
 				}
 			}
 		});
-		
+
 	})
 	.delete(function(req, res) {
 		id = req.params.id;
-		
+
 		Nanny.remove({_id: id}, function(err){
 			if(err)
 				res.send('Error')

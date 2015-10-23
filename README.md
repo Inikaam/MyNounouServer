@@ -29,10 +29,13 @@ L’API utilise l’architecture REST. Il y a 3 objets de données :
 * **Collection :** nannies
 * **URLs**
   * **Liste des nounous :** GET /api/nannies
-  * **Une nounou :** GET /api/nannies/{id de bdd}
+  * **Une nounou :** GET /api/nannies/{id-de-nounou}
   * **Ajouter une nounou :** POST /api/nannies
-  * **Modifier une nounou :** PUT /api/nannies/{id de bdd}
-  * **Supprimer une nounou :** DELETE /api/nannies/{id de bdd}
+  * **Modifier une nounou :** PUT /api/nannies/{id-de-nounou}
+  * **Supprimer une nounou :** DELETE /api/nannies/{id-de-nounou}
+  * **Commentaires sur une nounou :** GET /api/nannies/{id-de-nounou}/comments
+  * **Ajouter un commentaire sur une nounou :** POST /api/nannies/{id-de-nounou}/comments
+  * **Supprimer un commentaire sur une nounou :** DELETE /api/nannies/{id-de-nounou}/comments/{id-du-commentaire}
 
 ### Objet Nanny
 * **email :** (String, required) mail de la nounou

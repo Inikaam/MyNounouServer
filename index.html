@@ -5,53 +5,73 @@
 <body>
 	<button id="add">Ajouter</button>
 	<button id="upd">Modifier</button>
+	<button id="del">Supprimer</button>
 	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script>
+		
 		$.ajax({
 			method : "GET",
-			url : "/api/nannies",
+			url : "/api/nannies/562a182e0dd584941f7a736d/comments",
 		}).done(function(data) {
 			console.info(data);
 		}).fail(function( jqXHR, textStatus ) {
 			  console.info(jqXHR.responseJSON);
 		});
-		
+
 		$('#add').click(function(){
 			$.ajax({
 				method : "POST",
-				url : "/api/nannies",
+				url : "/api/nannies/562a182e0dd584941f7a736d/comments",
 				data: {
-					lastname: 'Mousset',
-					firstname: 'Myriam',
-					password: 'vzerbciZBFSF',
-					gender: 'F',
-					type: 'nanny',
-					age: 57,
-					tel: '0234567891',
-					email: 'myriam.mousset@gmail.com',
-					price: 6.50
+					id_parent: '562a19a20dd584941f7a736f',
+					date: Date.now(),
+					note: 3,
+					text: "Pas mal comme nounou 3"
 				}
 			}).done(function(data) {
 				console.info(data);
 			}).fail(function( jqXHR, textStatus ) {
 				  console.info(jqXHR.responseJSON);
 			});
-		});	
-		
-		
+		});
+
+
 		$('#upd').click(function(){
 			$.ajax({
 				method : "PUT",
-				url : "/api/nannies/56224a4711d712dcbbf3114f",
+				url : "/api/nannies/562a182e0dd584941f7a736d",
 				data: {
 					age: 59,
+					comments: [
+						{
+							_id: '562a1fa451fa764c2387cbd1',
+							id_parent: '562a19a20dd584941f7a736f',
+							date: Date.now(),
+							note: 3,
+							text: "Pas mal comme nounou 3",
+							del: true
+						}
+					]
 				}
 			}).done(function(data) {
 				console.info(data);
 			}).fail(function( jqXHR, textStatus ) {
 				  console.info(jqXHR.responseJSON);
 			});
-		});	
+		});
+		
+		$('#del').click(function(){
+			$.ajax({
+				method : "DELETE",
+				url : "/api/nannies/562a182e0dd584941f7a736d/comments/562a2e5f175a727828c245ba",
+			}).done(function(data) {
+				console.info(data);
+			}).fail(function( jqXHR, textStatus ) {
+				  console.info(jqXHR.responseJSON);
+			});
+		});
+		// nanny 562a182e0dd584941f7a736d
+		// parent 562a19a20dd584941f7a736f
 	</script>
 </body>
 </html>

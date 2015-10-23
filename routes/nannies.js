@@ -53,16 +53,20 @@ router.route('/:id')
 		id = req.params.id;
 		var updateNanny = req.body;
 
-		if(updateNanny.comments);
+		delete updateNanny.comments;
+		delete updateNanny.dispos;
+		delete updateNanny.restrictions;
 
-		Nanny.findByIdAndUpdate(id, {$set: req.body}, function(err, nanny){
+		Nanny.findByIdAndUpdate(id, {$set: updateNanny}, function(err, nanny) {
 			if(err)
 				res.send('Error');
 			else {
 				if(! nanny)
 					res.status(404).send("Aucune nounou trouvée.");
 				else {
-					res.sendStatus(200);
+					Nanny.findById(id, function(err, nanny){
+						res.status(200).json(nanny);
+					});
 				}
 			}
 		});
@@ -77,6 +81,71 @@ router.route('/:id')
 			else
 				res.sendStatus(200);
 		});
+	});
+
+router.route('/:id/comments')
+	.all(function(req, res, next) {
+		id = req.params.id;
+		if(! ValidatorHelper.isMongoId(id)) {
+			res.sendStatus(400);
+		} else {
+			next();
+		}
+	})
+	.get(function(req, res) {
+		id = req.params.id;
+		Nanny.findById(id, {comments: 1}, function(err, nanny) {
+			if(err)
+				res.sendStatus(500);
+			else
+				res.status(200).json(nanny.comments);
+		});
+	})
+	.post(function(req, res) {
+		id = req.params.id;
+			
+		Nanny.findByIdAndUpdate(id, {$push: {comments: req.body}}, function(err, nanny){
+			if(err)
+				res.sendStatus(500);
+			else {
+				Nanny.findById(id, {comments: 1}, function(err, nanny) {
+					if(err)
+						res.sendStatus(500);
+					else
+						res.status(200).json(nanny.comments);
+				});
+			}
+		});
+
+	});
+
+router.route('/:id/comments/:commentId')
+	.all(function(req, res, next) {
+		id = req.params.id;
+		commentId = req.params.commentId;
+		if(! ValidatorHelper.isMongoId(id) || ! ValidatorHelper.isMongoId(commentId)) {
+			res.sendStatus(400);
+		} else {
+			next();
+		}
+	})
+	.delete(function(req, res) {
+		id = req.params.id;
+		commentId = req.params.commentId;
+		
+		Nanny.findById(id, function(err, nanny) {
+			if(err)
+				res.sendStatus(500);
+			else {
+				nanny.comments.id(commentId).remove();
+				nanny.save(function(err) {
+					if(err)
+						res.sendStatus(500);
+					else 
+						res.status(200).send(true);
+				})
+			}
+		})
 	});
 
 module.exports = router;

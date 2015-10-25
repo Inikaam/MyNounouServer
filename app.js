@@ -21,7 +21,7 @@ var chats = require('./routes/chats');
 mongoose.connect(config.database);
 app.set('superSecret', config.secret);
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 /**

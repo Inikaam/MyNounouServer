@@ -5,7 +5,7 @@ var ValidatorHelper = {
 	isEmail: function(val) { // Source : http://emailregex.com/
 		return /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i.test(val);
 	},
-	// TODO : mettre les bons formats d'image
+	// TODO : mettre les bons formats image
 	isUrlImage: function(val) {
 		return /(https?:\/\/.*\.(?:png|jpg))/i.test(val);
 	},

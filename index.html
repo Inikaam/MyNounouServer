@@ -5,53 +5,62 @@
 <body>
 	<button id="add">Ajouter</button>
 	<button id="upd">Modifier</button>
+	<button id="del">Supprimer</button>
 	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script>
+		
 		$.ajax({
 			method : "GET",
-			url : "/api/nannies",
+			url : "/api/nannies/562a182e0dd584941f7a736d/restrictions",
 		}).done(function(data) {
 			console.info(data);
 		}).fail(function( jqXHR, textStatus ) {
 			  console.info(jqXHR.responseJSON);
 		});
-		
+
 		$('#add').click(function(){
 			$.ajax({
 				method : "POST",
-				url : "/api/nannies",
+				url : "/api/nannies/562a182e0dd584941f7a736d/restrictions",
 				data: {
-					lastname: 'Mousset',
-					firstname: 'Myriam',
-					password: 'vzerbciZBFSF',
-					gender: 'F',
-					type: 'nanny',
-					age: 57,
-					tel: '0234567891',
-					email: 'myriam.mousset@gmail.com',
-					price: 6.50
+					start: Date.now(),
+					end: Date.now(),
+					id_parent: "562a19a20dd584941f7a736f"
 				}
 			}).done(function(data) {
 				console.info(data);
 			}).fail(function( jqXHR, textStatus ) {
 				  console.info(jqXHR.responseJSON);
 			});
-		});	
-		
-		
+		});
+
+
 		$('#upd').click(function(){
 			$.ajax({
 				method : "PUT",
-				url : "/api/nannies/56224a4711d712dcbbf3114f",
+				url : "/api/nannies/562a182e0dd584941f7a736d/restrictions/562a4b43273a33202102986a",
 				data: {
-					age: 59,
+					reason: "Autre raison"
 				}
 			}).done(function(data) {
 				console.info(data);
 			}).fail(function( jqXHR, textStatus ) {
 				  console.info(jqXHR.responseJSON);
 			});
-		});	
+		});
+		
+		$('#del').click(function(){
+			$.ajax({
+				method : "DELETE",
+				url : "/api/nannies/562a182e0dd584941f7a736d/restrictions/562a4b45273a33202102986c",
+			}).done(function(data) {
+				console.info(data);
+			}).fail(function( jqXHR, textStatus ) {
+				  console.info(jqXHR.responseJSON);
+			});
+		});
+		// nanny 562a182e0dd584941f7a736d
+		// parent 562a19a20dd584941f7a736f
 	</script>
 </body>
 </html>

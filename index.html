@@ -15,7 +15,7 @@
 		}).done(function(data) {
 			console.info(data);
 		}).fail(function( jqXHR, textStatus ) {
-			  console.info(jqXHR.responseJSON);
+			  console.info(jqXHR.status);
 		});
 
 		$('#add').click(function(){

@@ -9,31 +9,6 @@ router.route('/')
 		Parent.find(function(err, parents) {
 			res.json(parents);
 		});
-	})
-	.post(function(req, res) {
-		var isValid = true;
-	
-		for (var index in req.body) {
-			isValid &= (req.body[index] != "" && req.body[index] != null);
-		}
-	
-		if (isValid) {
-			var newParent = new Parent(req.body);
-			newParent.save(function(err){
-				if (err) {
-					var errors = {};
-					for(var i in err.errors) {
-						errors[i] = err.errors[i].message;
-					}
-					res.status(400).send(errors);
-				}
-				else {
-					res.status(201).json(newParent);
-				}
-			});
-		} else {
-			res.send('Champs invalides !');
-		}
 	});
 
 router.route('/:id')

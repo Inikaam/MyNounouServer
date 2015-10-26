@@ -3,34 +3,40 @@
 <title>Test</title>
 </head>
 <body>
-	<button id="add">Ajouter</button>
-	<button id="upd">Modifier</button>
-	<button id="del">Supprimer</button>
+	<button id="add">POST</button>
+	<button id="upd">PUT</button>
+	<button id="del">DELETE</button>
 	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script>
 		
 		$.ajax({
 			method : "GET",
-			url : "/api/nannies/562a182e0dd584941f7a736d/restrictions",
+			url : "/api/nannies?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjI2NjU5YzU2ZDkwZWM4Y2ZlZjM3OTgiLCJsYXN0bmFtZSI6Ik1vdXNzZXQiLCJmaXJzdG5hbWUiOiJNeXJpYW0iLCJnZW5kZXIiOiJGIiwidHlwZSI6Im5hbm55IiwiYWdlIjo2MCwidGVsIjoiMDIzNDU2Nzg5MSIsImVtYWlsIjoibXlyaWFtLm1vdXNzZXRAZ21haWwuY29tIiwicHJpY2UiOjYuNSwiX192IjowLCJyZXN0cmljdGlvbnMiOlt7InJlYXNvbiI6IkNvbmfDqXMiLCJlbmQiOiIyMDE1LTEwLTIwVDE2OjIwOjI1LjgxNloiLCJzdGFydCI6IjIwMTUtMTAtMjBUMTY6MjA6MjUuODE2WiIsIl9pZCI6IjU2MjY2OWM5NDg0NzQzZDBkODM5NWMwZCJ9XSwiZGlzcG9zIjp7ImRpbSI6W10sInNhbSI6W10sInZlbiI6W10sImpldSI6W10sIm1lciI6W10sIm1hciI6W10sImx1biI6W119LCJjb21tZW50cyI6W3sidGV4dCI6IkNvbW1lbnRhaXJlIHN1cHBsw6ltZW50YWlyZSIsIm5vdGUiOjUsImRhdGUiOiIyMDE1LTEwLTIwVDE2OjAzOjU0Ljk4OFoiLCJpZF9wYXJlbnQiOiI1NjIyMTU0NjViY2QyYjNjYTQ3ZGIxYmMiLCJfaWQiOiI1NjI2NjVlYTU2ZDkwZWM4Y2ZlZjM3OWEifSx7InRleHQiOiJDb21tZW50YWlyZSBzdXBwbMOpbWVudGFpcmUiLCJub3RlIjo1LCJkYXRlIjoiMjAxNS0xMC0yMFQxNjoxNDoxNC40OTVaIiwiaWRfcGFyZW50IjoiNTYyMjE1NDY1YmNkMmIzY2E0N2RiMWJjIiwiX2lkIjoiNTYyNjY4NTY0ODQ3NDNkMGQ4Mzk1YzBhIn0seyJ0ZXh0IjoiQ29tbWVudGFpcmUgc3VwcGzDqW1lbnRhaXJlIiwibm90ZSI6NSwiZGF0ZSI6IjIwMTUtMTAtMjBUMTY6MTk6NDIuOTM2WiIsImlkX3BhcmVudCI6IjU2MjIxNTQ2NWJjZDJiM2NhNDdkYjFiYyIsIl9pZCI6IjU2MjY2OTllNDg0NzQzZDBkODM5NWMwYiJ9LHsidGV4dCI6IkNvbW1lbnRhaXJlIHN1cHBsw6ltZW50YWlyZSIsIm5vdGUiOjUsImRhdGUiOiIyMDE1LTEwLTIwVDE2OjIwOjI1LjgxNloiLCJpZF9wYXJlbnQiOiI1NjIyMTU0NjViY2QyYjNjYTQ3ZGIxYmMiLCJfaWQiOiI1NjI2NjljOTQ4NDc0M2QwZDgzOTVjMGMifV0sImRhdGVfdXBkIjoiMjAxNS0xMC0yMFQxNjowMjozNi4zMDFaIiwiZGF0ZV9hZGQiOiIyMDE1LTEwLTIwVDE2OjAyOjM2LjMwMVoifQ.eGvT3fTRJv-7_xEGXQNsEgz2uC4uSSxJZ1K27ZjSFPQ",
 		}).done(function(data) {
 			console.info(data);
 		}).fail(function( jqXHR, textStatus ) {
-			  console.info(jqXHR.status);
+			  console.info(jqXHR);
 		});
 
 		$('#add').click(function(){
 			$.ajax({
 				method : "POST",
-				url : "/api/nannies/562a182e0dd584941f7a736d/restrictions",
+				url : "/api/nannies",
 				data: {
-					start: Date.now(),
-					end: Date.now(),
-					id_parent: "562a19a20dd584941f7a736f"
+					email: 'myriam.mousset@gmail.com',
+					password: 'vzerbciZBFSF',
+					firstname: "Juliette",
+					lastname: "Dubois",
+					type: "babysitter",
+					gender: "F",
+					price: 2.50,
+					age: 22,
+					tel: "0123456789"
 				}
 			}).done(function(data) {
 				console.info(data);
 			}).fail(function( jqXHR, textStatus ) {
-				  console.info(jqXHR.responseJSON);
+				  console.info(jqXHR);
 			});
 		});
 

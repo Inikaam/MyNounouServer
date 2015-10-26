@@ -25,12 +25,22 @@ L’API utilise l’architecture REST. Il y a 3 objets de données :
 * Parent
 * Chat (messagerie interne de l’appli)
 
+Chaque URL est protégée par un token qui doit être fourni en paramètre de l'URL pour pouvoir y accéder.
+_Exemple : /api/nannies?token=my-token_
+
+### Authentification
+* **URLs**
+  * **Authentification nounou :** POST /api/login-nanny
+  * **Créer un compte nounou :** POST /api/nannies
+  * **Authentification parent :** POST /api/login-parent
+  * **Créer un compte parent :** POST /api/parents
+**Note :** Seule l'authentification renvoie le token de connexion, il faut donc s'authentifier après s'être inscrit.
+
 ### Nounous
 * **Collection :** nannies
 * **URLs**
   * **Liste des nounous :** GET /api/nannies
   * **Une nounou :** GET /api/nannies/{id-de-nounou}
-  * **Ajouter une nounou :** POST /api/nannies
   * **Modifier une nounou :** PUT /api/nannies/{id-de-nounou}
   * **Supprimer une nounou :** DELETE /api/nannies/{id-de-nounou}
   * **Commentaires sur une nounou :** GET /api/nannies/{id-de-nounou}/comments
@@ -72,7 +82,6 @@ L’API utilise l’architecture REST. Il y a 3 objets de données :
 * **URLs**
   * **Liste des parents :** GET /api/parents
   * **Un parent :** GET /api/parents/{id de bdd}
-  * **Ajouter un parent :** POST /api/parents
   * **Modifier un parent :** PUT /api/parents/{id de bdd}
   * **Supprimer un parent :** DELETE /api/parents/{id de bdd}
 

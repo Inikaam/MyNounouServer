@@ -9,22 +9,6 @@ router.route('/')
 		Nanny.find({}, {password: 0}, function(err, nannies) {
 			res.status(200).json(nannies);
 		});
-	})
-	.post(function(req, res) {
-
-		var newNanny = new Nanny(req.body);
-		newNanny.save(function(err){
-			if (err) {
-				var errors = {};
-				for(var i in err.errors) {
-					errors[i] = err.errors[i].message;
-				}
-				res.status(400).json(errors);
-			}
-			else {
-				res.status(201).json(newNanny);
-			}
-		});
 	});
 
 router.route('/:id')

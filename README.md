@@ -29,6 +29,13 @@ Chaque URL est protégée par un token qui doit être fourni en paramètre de l'
 
 _Exemple : /api/nannies?token=my-token_
 
+### Réponses
+Les réponses du serveur sont toujours un objet contenant les champs suivants :
+* **success :** true si la requête réussit, false sinon
+* **message :** message de succès ou d'erreur
+* **data :** donnée ou tableau de données demandée(s), n'existe pas en cas d'erreur
+* **token :** le token d'authentification, n'apparait que dans les réponses d'authentification
+
 ### Authentification
 * **URLs**
   * **Authentification nounou :** POST /api/login-nanny

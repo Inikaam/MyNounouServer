@@ -11,7 +11,7 @@
 		
 		$.ajax({
 			method : "GET",
-			url : "/api/nannies?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjI2NjU5YzU2ZDkwZWM4Y2ZlZjM3OTgiLCJsYXN0bmFtZSI6Ik1vdXNzZXQiLCJmaXJzdG5hbWUiOiJNeXJpYW0iLCJnZW5kZXIiOiJGIiwidHlwZSI6Im5hbm55IiwiYWdlIjo2MCwidGVsIjoiMDIzNDU2Nzg5MSIsImVtYWlsIjoibXlyaWFtLm1vdXNzZXRAZ21haWwuY29tIiwicHJpY2UiOjYuNSwiX192IjowLCJyZXN0cmljdGlvbnMiOlt7InJlYXNvbiI6IkNvbmfDqXMiLCJlbmQiOiIyMDE1LTEwLTIwVDE2OjIwOjI1LjgxNloiLCJzdGFydCI6IjIwMTUtMTAtMjBUMTY6MjA6MjUuODE2WiIsIl9pZCI6IjU2MjY2OWM5NDg0NzQzZDBkODM5NWMwZCJ9XSwiZGlzcG9zIjp7ImRpbSI6W10sInNhbSI6W10sInZlbiI6W10sImpldSI6W10sIm1lciI6W10sIm1hciI6W10sImx1biI6W119LCJjb21tZW50cyI6W3sidGV4dCI6IkNvbW1lbnRhaXJlIHN1cHBsw6ltZW50YWlyZSIsIm5vdGUiOjUsImRhdGUiOiIyMDE1LTEwLTIwVDE2OjAzOjU0Ljk4OFoiLCJpZF9wYXJlbnQiOiI1NjIyMTU0NjViY2QyYjNjYTQ3ZGIxYmMiLCJfaWQiOiI1NjI2NjVlYTU2ZDkwZWM4Y2ZlZjM3OWEifSx7InRleHQiOiJDb21tZW50YWlyZSBzdXBwbMOpbWVudGFpcmUiLCJub3RlIjo1LCJkYXRlIjoiMjAxNS0xMC0yMFQxNjoxNDoxNC40OTVaIiwiaWRfcGFyZW50IjoiNTYyMjE1NDY1YmNkMmIzY2E0N2RiMWJjIiwiX2lkIjoiNTYyNjY4NTY0ODQ3NDNkMGQ4Mzk1YzBhIn0seyJ0ZXh0IjoiQ29tbWVudGFpcmUgc3VwcGzDqW1lbnRhaXJlIiwibm90ZSI6NSwiZGF0ZSI6IjIwMTUtMTAtMjBUMTY6MTk6NDIuOTM2WiIsImlkX3BhcmVudCI6IjU2MjIxNTQ2NWJjZDJiM2NhNDdkYjFiYyIsIl9pZCI6IjU2MjY2OTllNDg0NzQzZDBkODM5NWMwYiJ9LHsidGV4dCI6IkNvbW1lbnRhaXJlIHN1cHBsw6ltZW50YWlyZSIsIm5vdGUiOjUsImRhdGUiOiIyMDE1LTEwLTIwVDE2OjIwOjI1LjgxNloiLCJpZF9wYXJlbnQiOiI1NjIyMTU0NjViY2QyYjNjYTQ3ZGIxYmMiLCJfaWQiOiI1NjI2NjljOTQ4NDc0M2QwZDgzOTVjMGMifV0sImRhdGVfdXBkIjoiMjAxNS0xMC0yMFQxNjowMjozNi4zMDFaIiwiZGF0ZV9hZGQiOiIyMDE1LTEwLTIwVDE2OjAyOjM2LjMwMVoifQ.eGvT3fTRJv-7_xEGXQNsEgz2uC4uSSxJZ1K27ZjSFPQ",
+			url : "/api/parents?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjI2NjU5YzU2ZDkwZWM4Y2ZlZjM3OTgiLCJsYXN0bmFtZSI6Ik1vdXNzZXQiLCJmaXJzdG5hbWUiOiJNeXJpYW0iLCJnZW5kZXIiOiJGIiwidHlwZSI6Im5hbm55IiwiYWdlIjo2MCwidGVsIjoiMDIzNDU2Nzg5MSIsImVtYWlsIjoibXlyaWFtLm1vdXNzZXRAZ21haWwuY29tIiwicHJpY2UiOjYuNSwiX192IjowLCJyZXN0cmljdGlvbnMiOlt7InJlYXNvbiI6IkNvbmfDqXMiLCJlbmQiOiIyMDE1LTEwLTIwVDE2OjIwOjI1LjgxNloiLCJzdGFydCI6IjIwMTUtMTAtMjBUMTY6MjA6MjUuODE2WiIsIl9pZCI6IjU2MjY2OWM5NDg0NzQzZDBkODM5NWMwZCJ9XSwiZGlzcG9zIjp7ImRpbSI6W10sInNhbSI6W10sInZlbiI6W10sImpldSI6W10sIm1lciI6W10sIm1hciI6W10sImx1biI6W119LCJjb21tZW50cyI6W3sidGV4dCI6IkNvbW1lbnRhaXJlIHN1cHBsw6ltZW50YWlyZSIsIm5vdGUiOjUsImRhdGUiOiIyMDE1LTEwLTIwVDE2OjAzOjU0Ljk4OFoiLCJpZF9wYXJlbnQiOiI1NjIyMTU0NjViY2QyYjNjYTQ3ZGIxYmMiLCJfaWQiOiI1NjI2NjVlYTU2ZDkwZWM4Y2ZlZjM3OWEifSx7InRleHQiOiJDb21tZW50YWlyZSBzdXBwbMOpbWVudGFpcmUiLCJub3RlIjo1LCJkYXRlIjoiMjAxNS0xMC0yMFQxNjoxNDoxNC40OTVaIiwiaWRfcGFyZW50IjoiNTYyMjE1NDY1YmNkMmIzY2E0N2RiMWJjIiwiX2lkIjoiNTYyNjY4NTY0ODQ3NDNkMGQ4Mzk1YzBhIn0seyJ0ZXh0IjoiQ29tbWVudGFpcmUgc3VwcGzDqW1lbnRhaXJlIiwibm90ZSI6NSwiZGF0ZSI6IjIwMTUtMTAtMjBUMTY6MTk6NDIuOTM2WiIsImlkX3BhcmVudCI6IjU2MjIxNTQ2NWJjZDJiM2NhNDdkYjFiYyIsIl9pZCI6IjU2MjY2OTllNDg0NzQzZDBkODM5NWMwYiJ9LHsidGV4dCI6IkNvbW1lbnRhaXJlIHN1cHBsw6ltZW50YWlyZSIsIm5vdGUiOjUsImRhdGUiOiIyMDE1LTEwLTIwVDE2OjIwOjI1LjgxNloiLCJpZF9wYXJlbnQiOiI1NjIyMTU0NjViY2QyYjNjYTQ3ZGIxYmMiLCJfaWQiOiI1NjI2NjljOTQ4NDc0M2QwZDgzOTVjMGMifV0sImRhdGVfdXBkIjoiMjAxNS0xMC0yMFQxNjowMjozNi4zMDFaIiwiZGF0ZV9hZGQiOiIyMDE1LTEwLTIwVDE2OjAyOjM2LjMwMVoifQ.eGvT3fTRJv-7_xEGXQNsEgz2uC4uSSxJZ1K27ZjSFPQ",
 		}).done(function(data) {
 			console.info(data);
 		}).fail(function( jqXHR, textStatus ) {
@@ -21,17 +21,10 @@
 		$('#add').click(function(){
 			$.ajax({
 				method : "POST",
-				url : "/api/nannies",
+				url : "/api/login-nanny",
 				data: {
 					email: 'myriam.mousset@gmail.com',
-					password: 'vzerbciZBFSF',
-					firstname: "Juliette",
-					lastname: "Dubois",
-					type: "babysitter",
-					gender: "F",
-					price: 2.50,
-					age: 22,
-					tel: "0123456789"
+					password: 'vzerbciZBFSF'
 				}
 			}).done(function(data) {
 				console.info(data);
@@ -44,9 +37,17 @@
 		$('#upd').click(function(){
 			$.ajax({
 				method : "PUT",
-				url : "/api/nannies/562a182e0dd584941f7a736d/restrictions/562a4b43273a33202102986a",
+				url : "/api/nannies/5626659c56d90ec8cfef3798?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjJlNzA2ZTNjNzExMGYwMmFhYmU5MTkiLCJlbWFpbCI6Im15cmlhbS5tb3Vzc2V0QGdtYWlsLmNvbSIsImZpcnN0bmFtZSI6Ikp1bGlldHRlIiwibGFzdG5hbWUiOiJEdWJvaXMiLCJ0eXBlIjoiYmFieXNpdHRlciIsImdlbmRlciI6IkYiLCJwcmljZSI6Mi41LCJhZ2UiOjIyLCJ0ZWwiOiIwMTIzNDU2Nzg5IiwiX192IjowLCJyZXN0cmljdGlvbnMiOltdLCJkaXNwb3MiOnsiZGltIjpbXSwic2FtIjpbXSwidmVuIjpbXSwiamV1IjpbXSwibWVyIjpbXSwibWFyIjpbXSwibHVuIjpbXX0sImNvbW1lbnRzIjpbXSwiZGF0ZV91cGQiOiIyMDE1LTEwLTI2VDE4OjI2OjU0LjM1NVoiLCJkYXRlX2FkZCI6IjIwMTUtMTAtMjZUMTg6MjY6NTQuMzU1WiJ9.uBMDyse5kjGkU8uBkyZRdYphLOXn1cmLmh0JcCejnwM",
 				data: {
-					reason: "Autre raison"
+					dispos: {
+						lun: [{start: '09:00', end: '12:00'}, {start: '14:00', end: '19:00'}],
+						mar: [],
+						mer: [],
+						jeu: [],
+						ven: [{start: '09:00', end: '12:00'}, {start: '14:00', end: '19:00'}],
+						sam: [],
+						dim: []
+					}
 				}
 			}).done(function(data) {
 				console.info(data);
@@ -58,7 +59,7 @@
 		$('#del').click(function(){
 			$.ajax({
 				method : "DELETE",
-				url : "/api/nannies/562a182e0dd584941f7a736d/restrictions/562a4b45273a33202102986c",
+				url : "/api/nannies/5626659c56d90ec8cfef3798?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NjJlNzA2ZTNjNzExMGYwMmFhYmU5MTkiLCJlbWFpbCI6Im15cmlhbS5tb3Vzc2V0QGdtYWlsLmNvbSIsImZpcnN0bmFtZSI6Ikp1bGlldHRlIiwibGFzdG5hbWUiOiJEdWJvaXMiLCJ0eXBlIjoiYmFieXNpdHRlciIsImdlbmRlciI6IkYiLCJwcmljZSI6Mi41LCJhZ2UiOjIyLCJ0ZWwiOiIwMTIzNDU2Nzg5IiwiX192IjowLCJyZXN0cmljdGlvbnMiOltdLCJkaXNwb3MiOnsiZGltIjpbXSwic2FtIjpbXSwidmVuIjpbXSwiamV1IjpbXSwibWVyIjpbXSwibWFyIjpbXSwibHVuIjpbXX0sImNvbW1lbnRzIjpbXSwiZGF0ZV91cGQiOiIyMDE1LTEwLTI2VDE4OjI2OjU0LjM1NVoiLCJkYXRlX2FkZCI6IjIwMTUtMTAtMjZUMTg6MjY6NTQuMzU1WiJ9.uBMDyse5kjGkU8uBkyZRdYphLOXn1cmLmh0JcCejnwM",
 			}).done(function(data) {
 				console.info(data);
 			}).fail(function( jqXHR, textStatus ) {

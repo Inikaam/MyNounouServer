@@ -105,6 +105,21 @@ router.route('/:id/favorites')
 			else
 				res.status(200).json({success: true, message: "Liste des favoris obtenue.", data: parent});
 		});
+	})
+	.post(function(req, res) {
+		Parent.findByIdAndUpdate(id, {$push: {favorites: req.body}}, function(err, parent) {
+			if (err)
+				throw err;
+			else {
+				
+				Parent.findById(id, function(err, parent){
+					if (err)
+						throw err;
+					else
+						res.status(200).json({success: true, message: "Favori ajouté.", data: parent.favorites});
+				});
+			}
+		});
 	});
 
 

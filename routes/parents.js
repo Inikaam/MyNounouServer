@@ -97,6 +97,7 @@ router.route('/:id/favorites')
 		}
 	})
 	.get(function(req, res) {
+		var id = req.params.id;
 		Parent.findById(id, function (err, parent){
 			if(err) 
 				throw err;
@@ -107,7 +108,8 @@ router.route('/:id/favorites')
 		});
 	})
 	.post(function(req, res) {
-		Parent.findByIdAndUpdate(id, {$push: {favorites: req.body}}, function(err, parent) {
+		var id = req.params.id;
+		Parent.findByIdAndUpdate(id, {$push: {favorites: req.body.favorite}}, function(err, parent) {
 			if (err)
 				throw err;
 			else {
@@ -116,11 +118,50 @@ router.route('/:id/favorites')
 					if (err)
 						throw err;
 					else
-						res.status(200).json({success: true, message: "Favori ajouté.", data: parent.favorites});
+						res.status(201).json({success: true, message: "Favori ajouté.", data: parent.favorites});
 				});
 			}
 		});
 	});
-
+router.route('/:id/favorites/:index')
+	.all(function(req, res, next) {
+		var id = req.params.id;
+		var index = req.params.index;
+		if(! ValidatorHelper.isMongoId(id)) {
+			res.status(400).json({success: false, message: "ID incorrect."});
+		} else if(req.decoded._id != id) {
+			res.status(403).json({success: false, message: "Vous n'êtes pas autorisé à accéder à cette partie."});
+		} else {
+			
+			Parent.findById(id, function (err, parent){
+				if(err) 
+					throw err;
+				else if(! parent)
+					res.status(404).json({success: false, message: "Aucun parent trouvé."});
+				else if(! parent.favorites[index])
+					res.status(404).json({success: false, message: "Aucun favori trouvé."});
+				else 
+					next();
+			});
+		}
+	})
+	.delete(function(req, res) {
+		var id = req.params.id;
+		var index = req.params.index;
+		
+		Parent.findById(id, function (err, parent){
+			if(err) 
+				throw err;
+			else {
+				parent.favorites.splice(index, 1);
+				parent.save(function(err) {
+					if (err)
+						throw err;
+					else
+						res.status(200).json({success: true, message: "Favori supprimé."});
+				});
+			}
+		});
+	});
 
 module.exports = router;

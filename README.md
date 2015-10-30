@@ -92,11 +92,15 @@ Les réponses du serveur sont toujours un objet contenant les champs suivants :
 * **Collection :** parents
 * **Règles**
   * On ne peut modifier ou supprimer que son propre profil
+  * On ne peut accéder qu'à ses propres favoris
 * **URLs**
   * **Liste des parents :** GET /api/parents
-  * **Un parent :** GET /api/parents/{id de bdd}
-  * **Modifier un parent :** PUT /api/parents/{id de bdd}
-  * **Supprimer un parent :** DELETE /api/parents/{id de bdd}
+  * **Un parent :** GET /api/parents/{id-parent}
+  * **Modifier un parent :** PUT /api/parents/{id-parent}
+  * **Supprimer un parent :** DELETE /api/parents/{id-parent}
+  * **Liste des favoris :** GET /api/{id-parent}/favorites
+  * **Ajouter un favori :** POST /api/{id-parent}/favorites
+  * **Supprimer un favori :** DELETE /api/{id-parent}/favorites/{index-du-favori}
 
 ### Objet Parent
 * **email :** (String, required) mail du parent

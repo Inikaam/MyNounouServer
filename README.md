@@ -47,6 +47,8 @@ Les réponses du serveur sont toujours un objet contenant les champs suivants :
 
 ### Nounous
 * **Collection :** nannies
+* **Règles**
+  * On ne peut modifier ou supprimer que son propre profil
 * **URLs**
   * **Liste des nounous :** GET /api/nannies
   * **Une nounou :** GET /api/nannies/{id-de-nounou}
@@ -88,6 +90,8 @@ Les réponses du serveur sont toujours un objet contenant les champs suivants :
 
 ### Parents
 * **Collection :** parents
+* **Règles**
+  * On ne peut modifier ou supprimer que son propre profil
 * **URLs**
   * **Liste des parents :** GET /api/parents
   * **Un parent :** GET /api/parents/{id de bdd}
@@ -109,6 +113,8 @@ Les réponses du serveur sont toujours un objet contenant les champs suivants :
 
 ### Conversations
 * **Collection :** chats
+* **Règles**
+  * On ne peut accéder qu'aux conversations auxquelles on a participé
 * **URLs**
   * **Liste des conversations pour un parent, une nounou ou les deux :** GET /api/chats?parent={id_du_parent}&nanny={id_de_la_nounou}
     * Il faut au moins un des deux paramètres de filtrage

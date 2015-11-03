@@ -27,6 +27,7 @@ router.route('/nannies')
 							res.status(400).json({success: false, errors: errors});
 						}
 						else {
+							delete newNanny.password;
 							var token = jwt.sign(newNanny, config.secret, {expiresIn: 86400});
 							res.status(201).json({
 								success: true, 
@@ -61,6 +62,7 @@ router.route('/parents')
 							res.status(400).json({success: false, errors: errors});
 						}
 						else {
+							delete newParent.password;
 							var token = jwt.sign(newParent, config.secret, {expiresIn: 86400});
 							res.status(201).json({
 								success: true, 
@@ -75,16 +77,33 @@ router.route('/parents')
 		}
 	});
 
-router.route('/login-nanny')
+router.route('/authenticate')
 	.post(function(req, res) {
 		Nanny.findOne(
 			{email: req.body.email, password: req.body.password}, 
 			{password: 0}, 
 			function(err, nanny) {
-				if (err) throw err;
-				
-				if(! nanny) {
-					res.json({ success: false, message: 'Authentification échouée. Email ou mot de passe incorrect.' });
+				if (err) 
+					throw err;
+				else if(! nanny) {
+					Parent.findOne(
+						{email: req.body.email, password: req.body.password}, 
+						{password: 0}, 
+						function(err, parent) {
+							if (err) throw err;
+							
+							if(! parent) {
+								res.json({ success: false, message: 'Authentification échouée. Email ou mot de passe incorrect.' });
+							} else {
+								var token = jwt.sign(parent, config.secret, {expiresIn: 86400});
+								
+								res.json({
+							        success: true,
+							        message: 'Authentification réussie, bienvenue ' + parent.firstname + ' ' + parent.lastname,
+							        token: token
+						        });
+							}
+						});
 				} else {
 					var token = jwt.sign(nanny, config.secret, {expiresIn: 86400});
 					
@@ -96,29 +115,6 @@ router.route('/login-nanny')
 				}
 			});
 	});
-
-router.route('/login-parent')
-	.post(function(req, res) {
-		Parent.findOne(
-			{email: req.body.email, password: req.body.password}, 
-			{password: 0}, 
-			function(err, parent) {
-				if (err) throw err;
-				
-				if(! parent) {
-					res.json({ success: false, message: 'Authentification échouée. Email ou mot de passe incorrect.' });
-				} else {
-					var token = jwt.sign(parent, config.secret, {expiresIn: 86400});
-					
-					res.json({
-				        success: true,
-				        message: 'Authentification réussie, bienvenue ' + parent.firstname + ' ' + parent.lastname,
-				        token: token
-			        });
-				}
-			});
-	});
-
 
 
 router.use(function(req, res, next) {

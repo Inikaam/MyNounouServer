@@ -9,38 +9,70 @@ var Parent = require('../models/Parent');
 
 router.route('/nannies')
 	.post(function(req, res) {
-
-		var newNanny = new Nanny(req.body);
-		newNanny.save(function(err){
-			if (err) {
-				var errors = {};
-				for(var i in err.errors) {
-					errors[i] = err.errors[i].message;
+		if(req.body.email) {
+			
+			Nanny.findOne({email: req.body.email}, function(err, nanny) {
+				if(err)
+					throw err;
+				else if(nanny) {
+					res.status(400).json({success: false, message: 'Cette adresse email existe déjà'});
+				} else {
+					var newNanny = new Nanny(req.body);
+					newNanny.save(function(err){
+						if (err) {
+							var errors = {};
+							for(var i in err.errors) {
+								errors[i] = err.errors[i].message;
+							}
+							res.status(400).json({success: false, errors: errors});
+						}
+						else {
+							var token = jwt.sign(newNanny, config.secret, {expiresIn: 86400});
+							res.status(201).json({
+								success: true, 
+								message: 'Compte ' + newNanny.email + ' créé avec succès.', 
+								data: newNanny, 
+								token: token
+							});
+						}
+					});
 				}
-				res.status(400).json({success: false, errors: errors});
-			}
-			else {
-				res.status(201).json({success: true, message: 'Compte ' + newNanny.email + ' créé avec succès.'});
-			}
-		});
+			});
+		}
+		
 	});
 
 router.route('/parents')
 	.post(function(req, res) {
-	
-		var newParent = new Parent(req.body);
-		newParent.save(function(err){
-			if (err) {
-				var errors = {};
-				for(var i in err.errors) {
-					errors[i] = err.errors[i].message;
+		if(req.body.email) {
+			Parent.findOne({email: req.body.email}, function(err, parent) {
+				if(err)
+					throw err;
+				else if(parent) {
+					res.status(400).json({success: false, message: 'Cette adresse email existe déjà'});
+				} else {
+					var newParent = new Parent(req.body);
+					newParent.save(function(err){
+						if (err) {
+							var errors = {};
+							for(var i in err.errors) {
+								errors[i] = err.errors[i].message;
+							}
+							res.status(400).json({success: false, errors: errors});
+						}
+						else {
+							var token = jwt.sign(newParent, config.secret, {expiresIn: 86400});
+							res.status(201).json({
+								success: true, 
+								message: 'Compte ' + newParent.email + ' créé avec succès.',
+								data: newParent,
+								token: token
+							});
+						}
+					});
 				}
-				res.status(400).json({success: false, errors: errors});
-			}
-			else {
-				res.status(201).json({success: true, message: 'Compte ' + newParent.email + ' créé avec succès.'});
-			}
-		});
+			});
+		}
 	});
 
 router.route('/login-nanny')
@@ -90,6 +122,7 @@ router.route('/login-parent')
 
 
 router.use(function(req, res, next) {
+	console.info(req);
 	var token = req.body.token || req.query.token || req.headers['x-access-token'];
 
 	if (token) {
@@ -106,7 +139,7 @@ router.use(function(req, res, next) {
 		});
 
 	} else {
-		return res.status(403).send({
+		return res.status(403).json({
 			success : false,
 			message : 'Aucun token fourni.'
 		});

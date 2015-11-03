@@ -39,9 +39,9 @@
 		$('#add').click(function(){
 			$.ajax({
 				method : "POST",
-				url : "/api/parents/5633704dec5c78c0291eca6b/favorites?token=" + token,
+				url : "/api/nannies",
 				data: {
-					favorite: 'zeffze'
+					email: 'test@test.com'
 				}
 			}).done(function(data) {
 				console.info(data);

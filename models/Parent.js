@@ -45,6 +45,31 @@ var parentSchema = new Schema({
 			message: "{VALUE} n'est pas un genre valide."
 		}
 	},
+	address: {
+		type: String,
+		required: true
+	},
+	address2: String,
+	postcode: {
+		type: String,
+		required: true,
+		validate: {
+			validator: ValidatorHelper.isPostCode,
+			message: "{VALUE} n'est pas un code postal valide."
+		}
+	},
+	city: {
+		type: String,
+		required: true
+	},
+	lat: {
+		type: Number,
+		required: true
+	},
+	lng: {
+		type: Number,
+		required: true
+	},
 	pic: {
 		type: String,
 		validate: {

@@ -72,6 +72,23 @@ var nannySchema = new Schema({
 			message: "{VALUE} n'est pas un type valide."
 		}
 	},
+	address: {
+		type: String,
+		required: true
+	},
+	address2: String,
+	postcode: {
+		type: String,
+		required: true,
+		validate: {
+			validator: ValidatorHelper.isPostCode,
+			message: "{VALUE} n'est pas un code postal valide."
+		}
+	},
+	city: {
+		type: String,
+		required: true
+	},
 	tel: {
 		type: String,
 		required: true,
@@ -93,6 +110,10 @@ var nannySchema = new Schema({
 			validator: ValidatorHelper.isUrlVideo,
 			message: "{VALUE} n'est pas une vidéo valide."
 		}
+	},
+	description: {
+		type: String,
+		required: true
 	},
 	price: {
 		type: Number,

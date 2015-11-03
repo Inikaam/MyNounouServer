@@ -18,6 +18,9 @@ var ValidatorHelper = {
 	},
 	isMongoId: function(val) {
 		return /^[0-9a-f]{24}$/.test(val);
+	},
+	isPostCode: function(val) {
+		return /^[0-9]{5}$/.test(val);
 	}
 }
 

@@ -90,9 +90,9 @@ router.route('/authenticate')
 						{email: req.body.email, password: req.body.password}, 
 						{password: 0}, 
 						function(err, parent) {
-							if (err) throw err;
-							
-							if(! parent) {
+							if (err) 
+								throw err;
+							else if(! parent) {
 								res.json({ success: false, message: 'Authentification échouée. Email ou mot de passe incorrect.' });
 							} else {
 								var token = jwt.sign(parent, config.secret, {expiresIn: 86400});
@@ -118,7 +118,6 @@ router.route('/authenticate')
 
 
 router.use(function(req, res, next) {
-	console.info(req);
 	var token = req.body.token || req.query.token || req.headers['x-access-token'];
 
 	if (token) {

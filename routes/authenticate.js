@@ -100,6 +100,7 @@ router.route('/authenticate')
 								res.json({
 							        success: true,
 							        message: 'Authentification réussie, bienvenue ' + parent.firstname + ' ' + parent.lastname,
+							        data: parent,
 							        token: token
 						        });
 							}

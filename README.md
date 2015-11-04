@@ -67,6 +67,12 @@ Les réponses du serveur sont toujours un objet contenant les champs suivants :
 * **password :** (String, indisponible en GET) Mot de passe de la nounou
 * **age :** (Int) Age de la nounou
 * **gender :** (String) “H” pour homme, “F” pour femme
+* **address :** (String) Adresse
+* **address2 :** (String) Complément d'adresse
+* **postcode :** (String) Code postal
+* **city :** (String) Ville
+* **lat :** (String) Latitude
+* **lng :** (String) Longitude
 * **type :** (String) “nanny” pour une nounou, “babysitter” pour une baby-sitter
 * **tel :** (String) numéro de tel de la nounou
 * **pic :** (String, Url) portrait de la nounou
@@ -111,6 +117,12 @@ Les réponses du serveur sont toujours un objet contenant les champs suivants :
 * **password :** (String, indisponible en GET) Mot de passe du parent
 * **age :** (Int) Age du parent
 * **gender :** (String) “H” pour homme, “F” pour femme
+* **address :** (String) Adresse
+* **address2 :** (String) Complément d'adresse
+* **postcode :** (String) Code postal
+* **city :** (String) Ville
+* **lat :** (String) Latitude
+* **lng :** (String) Longitude
 * **pic :** (String, Url) portrait du parent
 * **video :** (String, Url) vidéo de présentation du parent
 * **favoris :** Tableau de Strings, référence à id_nounou

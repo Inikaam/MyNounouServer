@@ -6,7 +6,8 @@ var Parent = require('../models/Parent');
 
 router.route('/')
 	.get(function(req, res) {
-		Parent.find({}, {password: 0}, function(err, parents) {
+		var query = req.query;
+		Parent.find(query, {password: 0}, function(err, parents) {
 			res.status(200).json({success: true, message: "Liste des parents obtenue.", data: parents});
 		});
 	});

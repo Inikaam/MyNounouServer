@@ -110,6 +110,7 @@ router.route('/authenticate')
 					res.json({
 				        success: true,
 				        message: 'Authentification réussie, bienvenue ' + nanny.firstname + ' ' + nanny.lastname,
+				        data: nanny,
 				        token: token
 			        });
 				}

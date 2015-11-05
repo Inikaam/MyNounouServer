@@ -4,18 +4,12 @@ var ValidatorHelper = require('../helpers/Validator');
 
 var frenchTimeInterval = {
 	start: {
-		type: String,
-		validate: {
-			validator: ValidatorHelper.isFrenchTime,
-			message: "{VALUE} n'est pas une heure de début correcte."
-		}
+		type: Number,
+		required: true
 	},
 	end: {
-		type: String,
-		validate: {
-			validator: ValidatorHelper.isFrenchTime,
-			message: "{VALUE} n'est pas une heure de fin correcte."
-		}
+		type: Number,
+		required: true
 	}
 };
 

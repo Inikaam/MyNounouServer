@@ -13,9 +13,6 @@ var ValidatorHelper = {
 	isUrlVideo: function(val) {
 		return /(https?:\/\/.*\.(?:mp4|avi))/i.test(val);
 	},
-	isFrenchTime: function(val) {
-		return /^([0-1][0-9]|2[0-3]):[0-5][0-9]$/.test(val);
-	},
 	isMongoId: function(val) {
 		return /^[0-9a-f]{24}$/.test(val);
 	},

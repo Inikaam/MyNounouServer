@@ -84,10 +84,8 @@ Les réponses du serveur sont toujours un objet contenant les champs suivants :
   * **note :** (Float) note de la prestation donnée par le parent, allant de 0 à 5
   * **text :** (String) commentaire du parent sur 255 caractères
 * **dispos :** objet contenant chaque jour de la semaine notés de la façon suivante : lun, mar, mer, jeu, ven, sam, dim. Chaque entrée contient un tableau d’objets formatés ainsi :
-  * **start :** (String) Heure de début de la disponibilité pour le jour donné 
-(format “09:00”)
-  * **end :** (String) Heure de fin de la disponibilité pour le jour donné
-(format “12:00”)
+  * **start :** (Int) Heure de début, en secondes, de la disponibilité pour le jour donné 
+  * **end :** (Int) Heure de fin, en secondes, de la disponibilité pour le jour donné
 * **restrictions :** Tableau de données
   * **start :** (Date) date et heure de début d’indisponibilité
   * **end :** (Date) date et heure de fin d’indisponibilité

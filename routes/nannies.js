@@ -46,7 +46,7 @@ router.route('/:id')
 		} else {
 			delete updateNanny.comments;
 			delete updateNanny.restrictions;
-			console.info(updateNanny);
+			
 			Nanny.findByIdAndUpdate(id, {$set: updateNanny}, function(err, nanny) {
 				if (err)
 					throw err;

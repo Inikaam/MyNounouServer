@@ -3,6 +3,7 @@ var router = express.Router();
 
 var ValidatorHelper = require('../helpers/Validator');
 var Parent = require('../models/Parent');
+var Nanny = require('../models/Nanny');
 
 router.route('/')
 	.get(function(req, res) {
@@ -104,8 +105,16 @@ router.route('/:id/favorites')
 				throw err;
 			else if(! parent)
 				res.status(404).json({success: false, message: "Aucun parent trouvé."});
-			else
-				res.status(200).json({success: true, message: "Liste des favoris obtenue.", data: parent});
+			else {
+				console.info(parent.favorites);
+				Nanny.find({_id: {$in: parent.favorites}}, {password: 0}, function(err, nannies) {
+					if(err)
+						throw err
+					else {
+						res.status(200).json({success: true, message: "Liste des favoris obtenue.", data: nannies});
+					}
+				});
+			}
 		});
 	})
 	.post(function(req, res) {
